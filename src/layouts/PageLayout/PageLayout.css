@@ -1,0 +1,8 @@
+.content {
+  height: 100vh;
+
+  background-color: var(--raisin-black);
+  color: var(--baby-blue-eyes);
+
+  padding: 150px 20px;
+}

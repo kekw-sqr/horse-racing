@@ -1,0 +1,23 @@
+.header {
+  position: fixed;
+  z-index: 1;
+
+  height: 80px;
+  width: 100%;
+
+  color: var(--baby-blue-eyes);
+  background-color: var(--raisin-black);
+
+  padding: 20px;
+
+  display: flex;
+}
+
+.icon path {
+  fill: var(--baby-blue-eyes);
+}
+
+.wallet {
+  position: absolute;
+  right: 20px;
+}
