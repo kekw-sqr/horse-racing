@@ -9,3 +9,8 @@
   --baby-powder: #fdfffcff;
   --medium-violet-red: #b91372ff; */
 }
+
+.widget {
+  display: flex;
+  justify-content: center;
+}

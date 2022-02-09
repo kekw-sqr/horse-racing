@@ -22,15 +22,16 @@ export const HorseRacing = () => {
       position: '30%',
     }
   ]
-  
+
   return (
     <PageLayout>
       <div>
         {/* <div className='raceTitle'>
           Race is on!
         </div> */}
-
-        <HorsesWidget horses={horses} />
+        <div className='widget'>
+          <HorsesWidget horses={horses} />
+        </div>
       </div>
     </PageLayout>
   )

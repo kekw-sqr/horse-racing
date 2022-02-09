@@ -2,6 +2,8 @@ import React, { FC } from 'react'
 import { HorseState } from './HorseState/HorseState'
 import { IHorse } from './types'
 
+import './HorsesWidget.css'
+
 interface IHorsesWidget {
   horses: IHorse[]
 }
