@@ -1,0 +1,14 @@
+.horseState {
+
+}
+
+.horseName {
+  display: flex;
+  justify-content: flex-end;
+  margin-bottom: 4px;
+}
+
+.line {
+  height: 20px;
+  border-radius: 0 20px 20px 0;
+}
