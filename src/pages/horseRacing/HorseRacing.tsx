@@ -25,12 +25,16 @@ export const HorseRacing = () => {
 
   return (
     <PageLayout>
-      <div>
-        {/* <div className='raceTitle'>
-          Race is on!
-        </div> */}
-        <div className='widget'>
-          <HorsesWidget horses={horses} />
+      <div className='horseRacing'>
+
+        <div className='horsesStateWidget'>
+          <div className='widget'>
+            <div className='raceStateTitle'>
+              Race state
+            </div>
+
+            <HorsesWidget horses={horses} />
+          </div>
         </div>
       </div>
     </PageLayout>

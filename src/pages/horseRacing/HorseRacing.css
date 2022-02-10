@@ -1,9 +1,23 @@
-.raceTitle {
-  font-size: 40px;
+.raceStateTitle {
+  font-size: 32px;
   text-align: left;
 }
 
 .widget {
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  align-items: flex-start;
+  width: 80%;
+}
+
+.horseRacing {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.horsesStateWidget {
   display: flex;
   justify-content: center;
 }
