@@ -1,27 +1,21 @@
-import React from 'react'
+import React, { useCallback, useState } from 'react'
 import { PageLayout } from '../../layouts/PageLayout/PageLayout'
 import { HorsesWidget } from './HorsesWidget/HorsesWidget'
 import './HorseRacing.css'
+import { MakeBet } from './MakeBet/MakeBet'
+import { initialHorses } from './consts'
 
 
 export const HorseRacing = () => {
-  const horses = [
-    {
-      name: 'Zhopa',
-      color: '#fdfffcff',
-      position: '80%',
-    },
-    {
-      name: 'Piska',
-      color: '#41ead4ff',
-      position: '60%',
-    },
-    {
-      name: 'Kal',
-      color: '#ff0022ff',
-      position: '30%',
-    }
-  ]
+  const [horses, setHorses] = useState(initialHorses) 
+
+  const chooseHorse = useCallback((index: number) => {
+    const newHorses = horses.slice()
+    const chosenHorse = horses[index]
+    chosenHorse.isBetOn = !chosenHorse.isBetOn
+    newHorses[index] = chosenHorse
+    setHorses(newHorses)
+  }, [horses, setHorses])
 
   return (
     <PageLayout>
@@ -33,7 +27,8 @@ export const HorseRacing = () => {
               Race state
             </div>
 
-            <HorsesWidget horses={horses} />
+            <HorsesWidget horses={horses} chooseHorse={chooseHorse}/>
+            <MakeBet />
           </div>
         </div>
       </div>

@@ -1,4 +1,16 @@
+.betIcon path {
+  fill: var(--baby-blue-eyes);
+}
+
 .horseState {
+  position: relative;
+  cursor: pointer;
+}
+
+.betIcon {
+  position: absolute;
+  top: 0;
+  left: 0;
 }
 
 .horseName {
