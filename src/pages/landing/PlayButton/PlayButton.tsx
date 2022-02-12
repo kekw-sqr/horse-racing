@@ -1,6 +1,6 @@
 import React from 'react'
 import { useHistory } from 'react-router-dom'
-import { HORSE_RACING } from '../../../routs'
+import { HORSE_RACING } from '../../../routes'
 
 import './PlayButton.css'
 
