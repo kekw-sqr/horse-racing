@@ -7,7 +7,7 @@ import { initialHorses } from './consts'
 
 
 export const HorseRacing = () => {
-  const [horses, setHorses] = useState(initialHorses) 
+  const [horses, setHorses] = useState(initialHorses)
 
   const chooseHorse = useCallback((index: number) => {
     const newHorses = horses.slice()
@@ -27,7 +27,7 @@ export const HorseRacing = () => {
               Race state
             </div>
 
-            <HorsesWidget horses={horses} chooseHorse={chooseHorse}/>
+            <HorsesWidget horses={horses} chooseHorse={chooseHorse} />
             <MakeBet />
           </div>
         </div>

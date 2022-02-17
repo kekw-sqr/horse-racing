@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom'
 import './Header.css'
 
 import Logo from './Icons/Logo'
-import { WalletModalContainer } from '../../../containers/WalletModal/index'
+import { WalletModalContainer } from '../../../containers/WalletModal/WalletModal'
 
 export const Header = () => {
   const [isWalletModalOpen, setIsWalletModalOpen] = useState(false);
