@@ -1,13 +1,13 @@
-import React, { FC } from 'react';
-import { ThemeProvider as StyledThemeProvider } from 'styled-components';
+import React, { FC } from 'react'
+import { ThemeProvider as StyledThemeProvider } from 'styled-components'
 
-const white = '#FFFFFF';
-const grey = '#F4F3F8';
-const darkGrey = '#DCD8EA';
-const purple = '#754CFF';
-const textNormal = '#6D6489';
-const darkPurple = '#2A1B5B';
-const orange = '#EF8726';
+const white = '#FFFFFF'
+const grey = '#F4F3F8'
+const darkGrey = '#DCD8EA'
+const purple = '#754CFF'
+const textNormal = '#6D6489'
+const darkPurple = '#2A1B5B'
+const orange = '#EF8726'
 
 const light = {
   text: {
@@ -77,7 +77,7 @@ const light = {
       color: {
         default: darkPurple,
         placeholder: textNormal,
-      }
+      },
     },
   },
   transferInput: {
@@ -89,7 +89,7 @@ const light = {
       weight: {
         default: 600,
         small: 400,
-      }
+      },
     },
   },
   modal: {
@@ -130,10 +130,8 @@ const light = {
     },
   },
   background: grey,
-};
+}
 
-export const ThemeProvider: FC<{}> =  ({ children }) => (
-  <StyledThemeProvider theme={light}>
-    {children}
-  </StyledThemeProvider>
-);
+export const ThemeProvider: FC<{ children: React.ReactNode }> = ({ children }) => (
+  <StyledThemeProvider theme={light}>{children}</StyledThemeProvider>
+)

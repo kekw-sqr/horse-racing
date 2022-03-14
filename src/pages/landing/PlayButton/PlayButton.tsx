@@ -12,7 +12,7 @@ export const PlayButton = () => {
   }
 
   return (
-    <div className='playButton' onClick={handleClick}>
+    <div className="playButton" onClick={handleClick}>
       PLAY
     </div>
   )

@@ -7,7 +7,7 @@ interface IButton {
 
 export const Button: FC<IButton> = (props) => {
   return (
-    <div className='generalButton' onClick={props.onClick}>
+    <div className="generalButton" onClick={props.onClick}>
       {props.children}
     </div>
   )

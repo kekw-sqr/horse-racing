@@ -11,24 +11,25 @@ interface IHorseState {
 }
 
 export const HorseState: FC<IHorseState> = ({ horse, margin, style, onClick }) => {
-
   const st = useMemo(
     () =>
       !margin && !style
         ? undefined
         : {
-          margin,
-          ...style,
-        },
+            margin,
+            ...style,
+          },
     [margin, style]
   )
 
   return (
-    <div style={st} onClick={onClick} className='horseState'>
-      {horse.isBetOn && <MoneyIcon className='betIcon'/>}
+    <div style={st} onClick={onClick} className="horseState">
+      {horse.isBetOn && <MoneyIcon className="betIcon" />}
       <div>
-        <div style={{ color: horse.color, width: horse.position }} className='horseName'>{horse.name}</div>
-        <div style={{ backgroundColor: horse.color, width: horse.position }} className={'line'} />
+        <div style={{ color: horse.color, width: horse.position }} className="horseName">
+          {horse.name}
+        </div>
+        <div style={{ backgroundColor: horse.color, width: horse.position }} className="line" />
       </div>
     </div>
   )

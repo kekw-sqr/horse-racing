@@ -1,11 +1,10 @@
 import React, { useState } from 'react'
-import { Button } from '../../../components/Button/Button'
-import { History } from '../../../components/History/History'
 import { useWeb3React } from '@web3-react/core'
 import { ethers, Contract } from 'ethers'
 import { Web3Provider } from '@ethersproject/providers'
+import { History } from '../../../components/History/History'
+import { Button } from '../../../components/Button/Button'
 import { BET_CONTRACT_CONFIG } from '../../../config'
-
 
 import './MakeBet.css'
 
@@ -20,28 +19,26 @@ export const MakeBet = () => {
   const [isOpen, setIsOpen] = useState(false)
   const [isHistryOpen, setIsHistoryOpen] = useState(false)
   const [betId, setBetId] = useState<string | null>(null)
-  const { library } = useWeb3React<Web3Provider>();
+  const { library } = useWeb3React<Web3Provider>()
 
   const makeBet = async () => {
     if (betId === null || library === undefined) return undefined
     const secret = ethers.utils.randomBytes(32)
     const betIdBytes = ethers.utils.toUtf8Bytes(betId)
     const hash = ethers.utils.keccak256(mergeUint8Arrays(betIdBytes, secret))
-    const betContract = new Contract(
-      BET_CONTRACT_CONFIG.address,
-      BET_CONTRACT_CONFIG.betAbi,
-      library,
-    ).connect(library.getSigner())
+    const betContract = new Contract(BET_CONTRACT_CONFIG.address, BET_CONTRACT_CONFIG.betAbi, library).connect(
+      library.getSigner()
+    )
     console.log(betContract)
     // TO SEND:
     // betContract.bet(12, hash)
   }
 
   return (
-    <div className='makeBet'>
+    <div className="makeBet">
       <Button onClick={() => makeBet()}>Make a bet</Button>
-      <input type="text" onChange={e => setBetId(e.target.value)} />
-      <History></History>
+      <input type="text" onChange={(e) => setBetId(e.target.value)} />
+      <History />
     </div>
   )
 }

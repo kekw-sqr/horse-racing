@@ -1,18 +1,17 @@
 import React, { FC } from 'react'
 
-import styled, { useTheme } from 'styled-components';
+import styled from 'styled-components'
 import ReactModal from 'react-modal'
-import {ReactComponent as CrossIconSvg} from '../../assets/cross.svg';
-
+import { ReactComponent as CrossIconSvg } from '../../assets/cross.svg'
 
 interface IModal {
   isOpen: boolean
   onClose: any
   title: any
-  onBack?: any
+  // onBack?: any
 }
 
-export const Modal: FC<IModal> = ({ children, isOpen, onClose, title, onBack }) => {
+export const Modal: FC<IModal> = ({ children, isOpen, onClose, title }) => {
   const customStyles = {
     content: {
       top: '50%',
@@ -26,15 +25,9 @@ export const Modal: FC<IModal> = ({ children, isOpen, onClose, title, onBack }) 
       borderRadius: '24px',
       opacity: '1',
     },
-  };
+  }
   return (
-    <ReactModal
-      isOpen={isOpen}
-      onRequestClose={onClose}
-      style={customStyles}
-      contentLabel={title}
-      ariaHideApp={false}
-    >
+    <ReactModal isOpen={isOpen} onRequestClose={onClose} style={customStyles} contentLabel={title} ariaHideApp={false}>
       <ModalContent>
         <Title>{title}</Title>
         {/* {onBack && <BackIcon onClick={onBack} />} */}
@@ -42,8 +35,8 @@ export const Modal: FC<IModal> = ({ children, isOpen, onClose, title, onBack }) 
         {children}
       </ModalContent>
     </ReactModal>
-  );
-};
+  )
+}
 
 const ModalContent = styled.div`
   display: flex;
@@ -53,23 +46,16 @@ const ModalContent = styled.div`
   padding: 26px 32px 32px;
   box-sizing: border-box;
   position: relative;
-`;
+`
 
 const Title = styled.span`
   font-size: 20px;
   margin-bottom: 24px;
-`;
+`
 
 const CrossIcon = styled(CrossIconSvg)`
   position: absolute;
   top: 31px;
   right: 21px;
   cursor: pointer;
-`;
-
-// const BackIcon = styled(BackIconSvg)`
-//   position: absolute;
-//   top: 31px;
-//   left: 21px;
-//   cursor: pointer;
-// `;
+`

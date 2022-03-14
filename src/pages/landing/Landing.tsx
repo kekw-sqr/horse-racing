@@ -7,12 +7,10 @@ import { PlayButton } from './PlayButton/PlayButton'
 export const Landing = () => {
   return (
     <PageLayout>
-      <div className='root'>
-        <div className='title'>
-          Blockchain Horse Racing
-        </div>
+      <div className="root">
+        <div className="title">Blockchain Horse Racing</div>
 
-        <PlayButton/>
+        <PlayButton />
       </div>
     </PageLayout>
   )

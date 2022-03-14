@@ -11,14 +11,10 @@ interface IHorsesWidget {
 
 export const HorsesWidget: FC<IHorsesWidget> = ({ horses, chooseHorse }) => {
   return (
-    <div className='horsesWidget'>
-      {horses.map((horse, i) =>
-        <HorseState
-          horse={horse}
-          margin={'20px 0 0 0'}
-          onClick={() => chooseHorse(i)}
-          key={horse.name}
-        />)}
+    <div className="horsesWidget">
+      {horses.map((horse, i) => (
+        <HorseState horse={horse} margin="20px 0 0 0" onClick={() => chooseHorse(i)} key={horse.name} />
+      ))}
     </div>
   )
 }

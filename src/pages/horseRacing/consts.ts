@@ -16,5 +16,5 @@ export const initialHorses = [
     color: '#ff0022ff',
     position: '30%',
     isBetOn: false,
-  }
+  },
 ]
