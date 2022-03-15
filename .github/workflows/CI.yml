@@ -2,9 +2,9 @@ name: Test, build and push app
 
 on:
   push:
-    branches: [ci]
+    branches: [master]
   pull_request:
-    branches: [ci]
+    branches: [master]
 jobs:
   lint:
     runs-on: ubuntu-20.04
