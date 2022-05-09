@@ -26,9 +26,7 @@ jobs:
         run: yarn
       - if: matrix.task == 'e2e'
         name: Run ${{ matrix.task }}
-        uses: GabrielBB/xvfb-action@v1
-        with:
-          run: yarn run ${{ matrix.task }}
+        run: xvfb-run -a yarn run ${{ matrix.task }}
       - if: matrix.task != 'e2e'
         name: Run ${{ matrix.task }}
         run: yarn run ${{ matrix.task }}

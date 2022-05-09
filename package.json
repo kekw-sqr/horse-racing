@@ -64,7 +64,8 @@
     "eslint:fix": "eslint --fix --ext .js,jsx,ts,tsx src",
     "prepare": "husky install",
     "cy:open": "CYPRESS_REMOTE_DEBUGGING_PORT=9222 cypress open",
-    "cy:run": "CYPRESS_REMOTE_DEBUGGING_PORT=9222 cypress run --browser chrome --headed"
+    "cy:run": "CYPRESS_REMOTE_DEBUGGING_PORT=9222 cypress run --browser chrome --headed",
+    "postinstall": "patch-package"
   },
   "husky": {
     "hooks": {
