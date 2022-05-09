@@ -10,3 +10,8 @@
 
   font-size: 20px;
 }
+
+.active {
+  background-color: var(--baby-blue-eyes);
+  color: white;
+}
