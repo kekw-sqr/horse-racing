@@ -2,5 +2,7 @@
   "baseUrl": "http://localhost:3000",
   "chromeWebSecurity": true,
   "video": false,
-  "screenshotOnRunFailure": false
+  "screenshotOnRunFailure": false,
+  "viewportWidth": 1640,
+  "viewportHeight": 1280
 }

@@ -11,14 +11,14 @@ contract RNDGame is Ownable {
     uint256 public roundId;
     uint256 public numOutcomes;
     IERC20 public token;
-    struct Bet {
+    struct UserBet {
         address addr;
         uint256 amount;
     }
     // round -> outcome
     mapping(uint256 => uint256) private outcomes;
     // round -> outcome -> participants
-    mapping(uint256 => mapping(uint256 => Bet[])) bets;
+    mapping(uint256 => mapping(uint256 => UserBet[])) bets;
     mapping(address => uint256) private balances;
     uint256[] rewardPerOutcome;
     uint256 roundBlockStart;
@@ -41,6 +41,9 @@ contract RNDGame is Ownable {
 
     event Deposit(address indexed user, uint256 amount);
     event Withdraw(address indexed user, uint256 amount);
+    event Bet(uint256 indexed roundId, address indexed user, uint256 amount);
+    event Win(uint256 indexed roundId, address indexed user, uint256 amount);
+    event Lose(uint256 indexed roundId, address indexed user, uint256 amount);
 
     function deposit(uint256 amount) external {
         token.transferFrom(msg.sender, address(this), amount);
@@ -63,7 +66,8 @@ contract RNDGame is Ownable {
         require(rnd.isCommitPhase(), "no bets at reveal phase");
         require(amount <= balances[msg.sender], "not enough tokens");
         balances[msg.sender] -= amount;
-        bets[roundId][outcome].push(Bet(msg.sender, amount));
+        bets[roundId][outcome].push(UserBet(msg.sender, amount));
+        emit Bet(roundId, msg.sender, amount);
     }
 
     function finalizeRound() external returns (uint256) {
@@ -80,10 +84,20 @@ contract RNDGame is Ownable {
     }
 
     function _distributeRewards(uint256 outcome) private {
-        Bet[] memory winners = bets[roundId][outcome];
+        UserBet[] storage addresses;
         uint256 rewardMult = rewardPerOutcome[outcome];
-        for (uint256 i = 0; i < winners.length; i++) {
-            balances[winners[i].addr] += winners[i].amount * rewardMult;
+        for (uint256 i = 0; i < numOutcomes; i++) {
+            addresses = bets[roundId][i];
+            if (i == outcome) {
+                for (uint256 j = 0; j < addresses.length; j++) {
+                    balances[addresses[j].addr] += addresses[j].amount * rewardMult;
+                    emit Win(roundId, addresses[j].addr, addresses[j].amount * rewardMult);
+                }
+            } else {
+                for (uint256 j = 0; j < addresses.length; j++) {
+                    emit Lose(roundId, addresses[j].addr, addresses[j].amount);
+                }
+            }
         }
     }
 

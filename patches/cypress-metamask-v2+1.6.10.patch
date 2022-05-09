@@ -55,7 +55,7 @@ index 7b0cb96..985bd5c 100644
    networkNameInput,
    rpcUrlInput,
 diff --git a/node_modules/cypress-metamask-v2/cypress/support/metamask.js b/node_modules/cypress-metamask-v2/cypress/support/metamask.js
-index 666e90a..ba5a5e3 100644
+index 666e90a..fb707dc 100644
 --- a/node_modules/cypress-metamask-v2/cypress/support/metamask.js
 +++ b/node_modules/cypress-metamask-v2/cypress/support/metamask.js
 @@ -77,10 +77,13 @@ module.exports = {
@@ -84,7 +84,24 @@ index 666e90a..ba5a5e3 100644
  
      setNetwork(network);
  
-@@ -464,42 +466,7 @@ module.exports = {
+@@ -428,11 +430,15 @@ module.exports = {
+   },
+   confirmPermissionToSpend: async () => {
+     const notificationPage = await puppeteer.switchToMetamaskNotification();
++    await notificationPage.waitForTimeout(10000);
++    await notificationPage.evaluate( () => {
++      document.querySelector('.page-container').scrollBy(0, 10000)
++    });
+     await puppeteer.waitAndClick(
+       notificationPageElements.allowToSpendButton,
+       notificationPage,
+     );
+-    await puppeteer.metamaskWindow().waitForTimeout(3000);
++    await notificationPage.waitForTimeout(3000);
+     return true;
+   },
+   rejectPermissionToSpend: async () => {
+@@ -464,47 +470,16 @@ module.exports = {
      return true;
    },
    confirmTransaction: async gasConfig => {
@@ -124,9 +141,19 @@ index 666e90a..ba5a5e3 100644
 -    await notificationPage.waitForFunction(
 -      `document.querySelector('${confirmPageElements.gasLimitInput}').value != "0"`,
 -    );
++    await notificationPage.waitForTimeout(10000);
++    await notificationPage.evaluate( () => {
++      document.querySelector('.notification .confirm-page-container-content').scrollBy(0, 10000)
++    });
      await puppeteer.waitAndClick(
        confirmPageElements.confirmButton,
        notificationPage,
+     );
+-    await puppeteer.metamaskWindow().waitForTimeout(3000);
++    await notificationPage.waitForTimeout(3000);
+     return true;
+   },
+   rejectTransaction: async () => {
 diff --git a/node_modules/cypress-metamask-v2/cypress/support/puppeteer.js b/node_modules/cypress-metamask-v2/cypress/support/puppeteer.js
 index 795fda1..bf2437f 100644
 --- a/node_modules/cypress-metamask-v2/cypress/support/puppeteer.js

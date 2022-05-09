@@ -8,7 +8,7 @@ export const Landing = () => {
   return (
     <PageLayout>
       <div className="root">
-        <div className="title">Blockchain Horse Racing</div>
+        <div className="title">Blockchain RND Game</div>
 
         <PlayButton />
       </div>

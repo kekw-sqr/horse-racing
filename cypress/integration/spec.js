@@ -7,7 +7,7 @@ describe('sqr project e2e test', () => {
     cy.visit('/')
   })
 
-  it('successfully makes a deposit', async () => {
+  it('successfully makes a deposit', () => {
     cy.get('#play-button').click()
 
     cy.get('#connect-wallet').click()
@@ -15,7 +15,8 @@ describe('sqr project e2e test', () => {
 
     cy.acceptMetamaskAccess(false)
 
-    cy.contains('0xf39Fd6e51aad88F6F4ce6aB8827279cffFb92266')
+    const address = '0xf39Fd6e51aad88F6F4ce6aB8827279cffFb92266'
+    cy.contains(address)
 
     cy.get('#mint-button').click()
     cy.confirmMetamaskTransaction()
@@ -32,23 +33,9 @@ describe('sqr project e2e test', () => {
     cy.get('#finalize-button').click()
     cy.confirmMetamaskTransaction()
 
-    cy.wait(100000000)
-  })
+    cy.wait(10000)
 
-  // it('jumps to game on Play button', () => {
-  //   cy.get('.playButton').click()
-  //
-  //   cy.location('href').should('contain', '/horse-racing')
-  //   cy.contains('Horse A')
-  //   cy.contains('Horse B')
-  //   cy.contains('Horse C')
-  // })
-  //
-  // it('should place a bet icon', () => {
-  //   cy.get('.playButton').click()
-  //
-  //   cy.get('.horseState').should('have.length', 3).first().click()
-  //
-  //   cy.get('.horseState').first().should('contain.html', 'betIcon')
-  // })
+    cy.get('.history .row').should('have.length', 2)
+    cy.get('.history .row').first().should('contain', address)
+  })
 })
