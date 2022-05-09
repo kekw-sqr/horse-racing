@@ -4,7 +4,7 @@ import { BigNumber } from 'ethers'
 import { Web3Provider } from '@ethersproject/providers'
 import { History } from '../../../components/History/History'
 import { Button } from '../../../components/Button/Button'
-import { getGameContract, getTokenContract } from '../../../lib/helpers'
+import { getGameContract } from '../../../lib/helpers'
 
 export const MakeBet = () => {
   const [outcome, setOutcome] = useState<BigNumber | null>(null)

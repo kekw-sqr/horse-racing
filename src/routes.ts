@@ -1,1 +1,1 @@
-export const HORSE_RACING = '/horse-racing'
+export const RND_GAME = '/rnd-game'

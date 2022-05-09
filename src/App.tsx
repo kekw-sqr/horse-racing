@@ -5,9 +5,9 @@ import { Web3Provider, ExternalProvider } from '@ethersproject/providers'
 import { BrowserRouter as Router, Switch, Route } from 'react-router-dom'
 
 import './App.css'
-import { HorseRacing } from './pages/horseRacing/HorseRacing'
+import { RNDGame } from './pages/RNDGame/RNDGame'
 import { Landing } from './pages/landing/Landing'
-import { HORSE_RACING } from './routes'
+import { RND_GAME } from './routes'
 import { ThemeProvider } from './providers/ThemeProvider'
 
 function getLibrary(provider: ExternalProvider) {
@@ -21,7 +21,7 @@ function App() {
         <Router>
           <Switch>
             <Route exact path="/" component={Landing} />
-            <Route path={HORSE_RACING} component={HorseRacing} />
+            <Route path={RND_GAME} component={RNDGame} />
           </Switch>
         </Router>
       </Web3ReactProvider>

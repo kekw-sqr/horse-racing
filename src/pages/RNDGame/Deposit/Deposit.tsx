@@ -2,11 +2,8 @@ import React, { useState } from 'react'
 import { useWeb3React } from '@web3-react/core'
 import { BigNumber } from 'ethers'
 import { Web3Provider } from '@ethersproject/providers'
-import { History } from '../../../components/History/History'
 import { Button } from '../../../components/Button/Button'
 import { getGameContract, getTokenContract } from '../../../lib/helpers'
-
-// import './Deposit.css'
 
 export const Deposit = () => {
   const [depositAmount, setDepositAmount] = useState<BigNumber | null>(null)

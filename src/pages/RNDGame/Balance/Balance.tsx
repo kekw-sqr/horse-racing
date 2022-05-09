@@ -1,8 +1,7 @@
 import React, { useEffect, useState } from 'react'
 import { useWeb3React } from '@web3-react/core'
-import { Contract, BigNumber } from 'ethers'
+import { BigNumber } from 'ethers'
 import { Web3Provider } from '@ethersproject/providers'
-import { BET_CONTRACT_CONFIG } from '../../../config'
 import { Button } from '../../../components/Button/Button'
 import { getGameContract, getTokenContract } from '../../../lib/helpers'
 
