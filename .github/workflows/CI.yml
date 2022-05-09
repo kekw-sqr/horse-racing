@@ -15,7 +15,7 @@ jobs:
     runs-on: ubuntu-latest
     strategy:
       matrix:
-        task: [eslint, test, e2e]
+        task: [eslint, test]
       fail-fast: false
     steps:
       - uses: actions/checkout@v3
@@ -30,6 +30,18 @@ jobs:
       - if: matrix.task != 'e2e'
         name: Run ${{ matrix.task }}
         run: yarn run ${{ matrix.task }}
+  sonarcloud:
+    name: SonarCloud
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+        with:
+          fetch-depth: 0  # Shallow clones should be disabled for a better relevancy of analysis
+      - name: SonarCloud Scan
+        uses: SonarSource/sonarcloud-github-action@master
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}  # Needed to get PR information, if any
+          SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
   build:
     runs-on: ubuntu-latest
     needs: [validate]
