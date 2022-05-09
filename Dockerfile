@@ -1,4 +1,4 @@
-FROM node:16-alpine AS build-stage
+FROM node:16 AS build-stage
 
 ARG NODE_ENV=development
 ENV NODE_ENV ${NODE_ENV}
@@ -8,7 +8,7 @@ RUN echo "building for ${NODE_ENV}"
 WORKDIR /app
 COPY yarn.lock .
 COPY package.json .
-RUN yarn install --network-timeout 1000000000
+RUN yarn
 COPY . .
 RUN yarn build
 
