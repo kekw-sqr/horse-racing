@@ -8,10 +8,11 @@ import connectors from '../../connectors/index'
 interface IWalletModal {
   isOpen: boolean
   onClose: any
+  setUserAddress: any
 }
 
-export const WalletModalContainer: FC<IWalletModal> = ({ isOpen, onClose }) => {
-  const { activate } = useWeb3React()
+export const WalletModalContainer: FC<IWalletModal> = ({ isOpen, onClose, setUserAddress }) => {
+  const { activate, account } = useWeb3React()
 
   const connectWallet = useCallback(
     async (connector) => {
@@ -34,6 +35,12 @@ export const WalletModalContainer: FC<IWalletModal> = ({ isOpen, onClose }) => {
     }
     connect()
   }, [activate])
+
+  useEffect(() => {
+    if (!account) return
+
+    setUserAddress(account)
+  })
 
   return (
     <WalletModal
