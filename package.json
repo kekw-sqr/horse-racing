@@ -53,7 +53,8 @@
   "scripts": {
     "start": "react-scripts start",
     "build": "react-scripts build",
-    "test": "react-scripts test",
+    "test": "yarn workspace contracts run hardhat test",
+    "e2e": "./e2e/run.sh",
     "eject": "react-scripts eject",
     "eslint": "eslint --ext .js,jsx,ts,tsx src",
     "eslint:fix": "eslint --fix --ext .js,jsx,ts,tsx src",
