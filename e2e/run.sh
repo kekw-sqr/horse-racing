@@ -1,5 +1,7 @@
 #!/bin/bash
 
+set -e
+
 yarn workspace contracts run e2e:node 2>&1 > node.log &
 
 pid=$!

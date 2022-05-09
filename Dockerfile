@@ -1,4 +1,4 @@
-FROM node:14.17.5-alpine3.12 AS build-stage
+FROM node:16-alpine AS build-stage
 
 ARG NODE_ENV=development
 ENV NODE_ENV ${NODE_ENV}
