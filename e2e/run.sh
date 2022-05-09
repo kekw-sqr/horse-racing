@@ -11,6 +11,6 @@ yarn workspace contracts run e2e:deploy
 echo "Using local contracts"
 cat contracts/e2e/contracts.json
 
-echo "TODO: run cypress with metamask"
+yarn cy:run
 
 kill -9 $pid

@@ -1,11 +1,14 @@
-
-
-describe('horse racing test', () => {
-  beforeEach(() => {
-    cy.visit('http://localhost:3000')
+describe('sqr project e2e test', () => {
+  before(() => {
+    cy.setupMetamask()
   })
 
-  it('displays title', () => {
+  beforeEach(() => {
+    cy.visit('/')
+  })
+
+  it.only('displays title', () => {
+    cy.window().then(win => console.log('Metamask:', win.ethereum.isMetaMask))
     cy.get('.title').should('contain', 'Blockchain Horse Racing')
   })
 

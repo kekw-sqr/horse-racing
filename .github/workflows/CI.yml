@@ -24,7 +24,13 @@ jobs:
           node-version: 16
       - name: Yarn install
         run: yarn
-      - name: Run ${{ matrix.task }}
+      - if: matrix.task == 'e2e'
+        name: Run ${{ matrix.task }}
+        uses: GabrielBB/xvfb-action@v1
+        with:
+          run: yarn run ${{ matrix.task }}
+      - if: matrix.task != 'e2e'
+        name: Run ${{ matrix.task }}
         run: yarn run ${{ matrix.task }}
   build:
     runs-on: ubuntu-latest

@@ -1,0 +1,100 @@
+diff --git a/node_modules/cypress-metamask-v2/cypress/pages/metamask/first-time-flow-page.js b/node_modules/cypress-metamask-v2/cypress/pages/metamask/first-time-flow-page.js
+index d015210..494b961 100644
+--- a/node_modules/cypress-metamask-v2/cypress/pages/metamask/first-time-flow-page.js
++++ b/node_modules/cypress-metamask-v2/cypress/pages/metamask/first-time-flow-page.js
+@@ -23,12 +23,12 @@ module.exports.metametricsPageElements = {
+   optOutAnalyticsButton,
+ };
+ 
+-const firstTimeFlowFormPage = '.first-time-flow__form';
++const firstTimeFlowFormPage = '.create-new-vault__form';
+ const secretWordsInput = `${firstTimeFlowFormPage} .first-time-flow__seedphrase input`;
+ const passwordInput = `${firstTimeFlowFormPage} #password`;
+ const confirmPasswordInput = `${firstTimeFlowFormPage} #confirm-password`;
+-const termsCheckbox = `${firstTimeFlowFormPage} .first-time-flow__terms`;
+-const importButton = `${firstTimeFlowFormPage} .first-time-flow__button`;
++const termsCheckbox = `#create-new-vault__terms-checkbox`;
++const importButton = `${firstTimeFlowFormPage} .create-new-vault__submit-button`;
+ const newPasswordInput = `${firstTimeFlowFormPage} #create-password`;
+ const newSignupCheckbox = `${firstTimeFlowFormPage} .first-time-flow__checkbox`;
+ 
+diff --git a/node_modules/cypress-metamask-v2/cypress/pages/metamask/main-page.js b/node_modules/cypress-metamask-v2/cypress/pages/metamask/main-page.js
+index bfe3de4..456c429 100644
+--- a/node_modules/cypress-metamask-v2/cypress/pages/metamask/main-page.js
++++ b/node_modules/cypress-metamask-v2/cypress/pages/metamask/main-page.js
+@@ -36,7 +36,7 @@ const connectedSites = {
+ };
+ 
+ const accountModal = {
+-  walletAddressInput: '.account-modal input',
++  walletAddressInput: '.qr-code__address',
+   closeButton: '.account-modal__close',
+ };
+ 
+diff --git a/node_modules/cypress-metamask-v2/cypress/pages/metamask/settings-page.js b/node_modules/cypress-metamask-v2/cypress/pages/metamask/settings-page.js
+index 7b0cb96..985bd5c 100644
+--- a/node_modules/cypress-metamask-v2/cypress/pages/metamask/settings-page.js
++++ b/node_modules/cypress-metamask-v2/cypress/pages/metamask/settings-page.js
+@@ -31,12 +31,12 @@ module.exports.resetAccountModalElements = {
+ const addNetworkButton = '.networks-tab__body button';
+ module.exports.networksPageElements = { addNetworkButton };
+ 
+-const networkNameInput = '#network-name';
+-const rpcUrlInput = '#rpc-url';
+-const chainIdInput = '#chainId';
+-const symbolInput = '#network-ticker';
+-const blockExplorerInput = '#block-explorer-url';
+-const saveButton = '.network-form__footer button:nth-child(2)';
++const networkNameInput = '.networks-tab__add-network-form-body .form-field:nth-of-type(1) .form-field__input';
++const rpcUrlInput = '.networks-tab__add-network-form-body .form-field:nth-of-type(2) .form-field__input';
++const chainIdInput = '.networks-tab__add-network-form-body .form-field:nth-of-type(3) .form-field__input';
++const symbolInput = '.networks-tab__add-network-form-body .form-field:nth-of-type(4) .form-field__input';
++const blockExplorerInput = '.networks-tab__add-network-form-body .form-field:nth-of-type(5) .form-field__input';
++const saveButton = '.networks-tab__add-network-form-footer button:nth-of-type(2)';
+ module.exports.addNetworkPageElements = {
+   networkNameInput,
+   rpcUrlInput,
+diff --git a/node_modules/cypress-metamask-v2/cypress/support/metamask.js b/node_modules/cypress-metamask-v2/cypress/support/metamask.js
+index 666e90a..84edf8a 100644
+--- a/node_modules/cypress-metamask-v2/cypress/support/metamask.js
++++ b/node_modules/cypress-metamask-v2/cypress/support/metamask.js
+@@ -77,10 +77,13 @@ module.exports = {
+   importWallet: async (secretWords, password) => {
+     await puppeteer.waitAndClick(firstTimeFlowPageElements.importWalletButton);
+     await puppeteer.waitAndClick(metametricsPageElements.optOutAnalyticsButton);
+-    await puppeteer.waitAndType(
+-      firstTimeFlowFormPageElements.secretWordsInput,
+-      secretWords,
+-    );
++    const words = secretWords.split(' ')
++    for (let i = 0; i < 12; i++) {
++      await puppeteer.waitAndType(
++        '#import-srp__srp-word-' + i,
++        words[i],
++      );
++    }
+     await puppeteer.waitAndType(
+       firstTimeFlowFormPageElements.passwordInput,
+       password,
+@@ -300,7 +303,6 @@ module.exports = {
+     }
+ 
+     await puppeteer.waitAndClick(addNetworkPageElements.saveButton);
+-    await puppeteer.waitAndClick(settingsPageElements.closeButton);
+ 
+     setNetwork(network);
+ 
+diff --git a/node_modules/cypress-metamask-v2/cypress/support/puppeteer.js b/node_modules/cypress-metamask-v2/cypress/support/puppeteer.js
+index 795fda1..bf2437f 100644
+--- a/node_modules/cypress-metamask-v2/cypress/support/puppeteer.js
++++ b/node_modules/cypress-metamask-v2/cypress/support/puppeteer.js
+@@ -37,6 +37,9 @@ module.exports = {
+   },
+   assignWindows: async () => {
+     let pages = await puppeteerBrowser.pages();
++    while (pages.length < 2) {
++      await new Promise(res => setTimeout(res, 500))
++    }
+     for (const page of pages) {
+       if (page.url().includes('integration')) {
+         mainWindow = page;

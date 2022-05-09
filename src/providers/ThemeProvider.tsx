@@ -133,5 +133,6 @@ const light = {
 }
 
 export const ThemeProvider: FC<{ children: React.ReactNode }> = ({ children }) => (
+  // @ts-ignore
   <StyledThemeProvider theme={light}>{children}</StyledThemeProvider>
 )
