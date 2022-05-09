@@ -5,17 +5,26 @@ import { Deposit } from './Deposit/Deposit'
 import { Balance } from './Balance/Balance'
 import { FinalizeRound } from './FinalizeRound/FinalizeRound'
 import './RNDGame.css'
+import { AnimatedToken } from '../../components/AnimatedToken/AnimatedToken'
+import { History } from '../../components/History/History'
 
 export const RNDGame = () => {
   return (
     <PageLayout>
       <div className="rndGame">
-        <Balance />
-        <div className="controls">
-          <MakeBet />
-          <Deposit />
+        <div className="leftBlock">
+          <Balance />
+          <div className="token">
+            <AnimatedToken />
+          </div>
+          <div className="controls">
+            <MakeBet />
+            <Deposit />
+          </div>
+          <FinalizeRound />
         </div>
-        <FinalizeRound />
+
+        <History />
       </div>
     </PageLayout>
   )

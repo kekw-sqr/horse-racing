@@ -5,5 +5,5 @@ input[type=text] {
   font-size: 20px;
   border-radius: 10px;
   color: var(--baby-blue-eyes);
-
+  font-family: 'Bebas Neue';
 }

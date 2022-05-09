@@ -5,4 +5,7 @@
   color: var(--baby-blue-eyes);
 
   padding: 150px 40px 0 40px;
+
+  display: flex;
+  justify-content: center;
 }

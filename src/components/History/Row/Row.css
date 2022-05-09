@@ -1,0 +1,17 @@
+.row {
+  display: grid;
+  grid-template-columns: 3fr 1fr;
+  margin-bottom: 5px;
+}
+
+.address {
+  margin-right: 20px;
+}
+
+.winAmount {
+  color: green;
+}
+
+.lostAmount {
+  color: red;
+}
