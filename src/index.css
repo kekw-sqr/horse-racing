@@ -7,7 +7,7 @@ body {
   --secondary: #222930;
 
   margin: 0;
-  font-family: "Bebas Neue";
+  font-family: 'Bebas Neue';
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 
@@ -15,10 +15,10 @@ body {
 }
 
 code {
-  font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New", monospace;
+  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New', monospace;
 }
 
 @font-face {
-  font-family: "Bebas Neue";
-  src: url("static/fonts/DEXO.otf") format("OpenType");
- }
+  font-family: 'Bebas Neue';
+  src: url('static/fonts/DEXO.otf') format('OpenType');
+}

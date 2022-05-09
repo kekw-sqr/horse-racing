@@ -1,9 +1,11 @@
 import React, { useCallback, useState } from 'react'
 import { PageLayout } from '../../layouts/PageLayout/PageLayout'
 import { HorsesWidget } from './HorsesWidget/HorsesWidget'
-import './HorseRacing.css'
 import { MakeBet } from './MakeBet/MakeBet'
 import { initialHorses } from './consts'
+import { Deposit } from './Deposit/Deposit'
+import { Balance } from './Balance/Balance'
+import './HorseRacing.css'
 
 export const HorseRacing = () => {
   const [horses, setHorses] = useState(initialHorses)
@@ -27,7 +29,9 @@ export const HorseRacing = () => {
             <div className="raceStateTitle">Race state</div>
 
             <HorsesWidget horses={horses} chooseHorse={chooseHorse} />
+            <Balance />
             <MakeBet />
+            <Deposit />
           </div>
         </div>
       </div>

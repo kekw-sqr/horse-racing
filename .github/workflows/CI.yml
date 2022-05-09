@@ -19,7 +19,7 @@ jobs:
           yarn eslint
   build:
     runs-on: ubuntu-20.04
-    needs: [ lint ]
+    needs: [lint]
     env:
       REGISTRY: ghcr.io
       IMAGE_NAME: ${{ github.repository }}

@@ -35,7 +35,7 @@ const namingConventionConfig = [
     leadingUnderscore: 'allow',
     trailingUnderscore: 'allow',
   },
-];
+]
 
 module.exports = {
   parser: '@typescript-eslint/parser',
@@ -48,7 +48,7 @@ module.exports = {
     'plugin:@typescript-eslint/recommended-requiring-type-checking',
   ],
   rules: {
-    'curly': 2,
+    curly: 2,
     'no-underscore-dangle': 0,
     radix: 0,
     'no-useless-escape': 'off',
@@ -113,7 +113,8 @@ module.exports = {
     'react/destructuring-assignment': 0,
     'no-await-in-loop': 0,
     'react/no-access-state-in-setstate': 0,
-    'prettier/prettier': ['error',
+    'prettier/prettier': [
+      'error',
       {
         endOfLine: 'auto',
       },
@@ -125,4 +126,4 @@ module.exports = {
       legacyDecorators: true,
     },
   },
-};
+}

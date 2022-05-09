@@ -2,6 +2,6 @@
 module.exports = {
   preset: 'ts-jest',
   testEnvironment: 'node',
-  rootDir: "src",
-  testRegex: "(/__tests__/.*|(\\.|/)(test|spec))\\.(j|t)sx?$"
-};
+  rootDir: 'src',
+  testRegex: '(/__tests__/.*|(\\.|/)(test|spec))\\.(j|t)sx?$',
+}
