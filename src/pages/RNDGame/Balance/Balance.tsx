@@ -47,7 +47,9 @@ export const Balance = () => {
       </div>
 
       <div className="mint">
-        <Button onClick={() => mint()}>Mint</Button>
+        <Button id="mint-button" onClick={() => mint()}>
+          Mint
+        </Button>
       </div>
     </div>
   )

@@ -14,7 +14,7 @@ export const Header = () => {
         <Link to="/" className="icon">
           <Logo />
         </Link>
-        <div className="wallet" onClick={() => setIsWalletModalOpen(true)}>
+        <div className="wallet" id="connect-wallet" onClick={() => setIsWalletModalOpen(true)}>
           {userAddress || 'Connect wallet'}
         </div>
         <WalletModalContainer

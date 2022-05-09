@@ -23,18 +23,20 @@ export const MakeBet = () => {
   return (
     <div className="makeBet">
       <div className="inputWrapper">
-        <TokenInput onChange={(v) => setAmount(BigNumber.from(v))} value={amount?.toString()} />
+        <TokenInput id="bet-amount" onChange={(v) => setAmount(BigNumber.from(v))} value={amount?.toString()} />
       </div>
       <div className="chooseOutcome">
-        <Button onClick={() => setOutcome(0)} active={outcome === 0}>
+        <Button id="outcome-1-button" onClick={() => setOutcome(0)} active={outcome === 0}>
           Outcome 1
         </Button>
-        <Button onClick={() => setOutcome(1)} active={outcome === 1}>
+        <Button id="outcome-2-button" onClick={() => setOutcome(1)} active={outcome === 1}>
           Outcome 2
         </Button>
       </div>
 
-      <Button onClick={() => makeBet()}>Make bet</Button>
+      <Button id="make-bet-button" onClick={() => makeBet()}>
+        Make bet
+      </Button>
     </div>
   )
 }

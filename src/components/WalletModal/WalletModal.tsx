@@ -16,7 +16,11 @@ export const WalletModal: FC<IWalletModal> = ({ isOpen, onClose, connectors, con
     <Modal isOpen={isOpen} onClose={onClose} title="Connect web3 wallet">
       <Text>Select a wallet below:</Text>
       {connectors.map((connector) => (
-        <WalletConnector key={connector.name} onClick={() => connectWallet(connector.connector)}>
+        <WalletConnector
+          key={connector.name}
+          id={`connector-${(connector.name as string).toLowerCase()}`}
+          onClick={() => connectWallet(connector.connector)}
+        >
           <WalletConnectorName>{connector.name}</WalletConnectorName>
           <WalletConnectorIcon src={connector.icon} />
         </WalletConnector>

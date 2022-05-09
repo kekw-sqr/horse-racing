@@ -24,9 +24,15 @@ export const Deposit = () => {
   return (
     <div className="deposit">
       <div className="inputWrapper">
-        <TokenInput onChange={(v) => setDepositAmount(BigNumber.from(v))} value={depositAmount?.toString()} />
+        <TokenInput
+          id="deposit-amount"
+          onChange={(v) => setDepositAmount(BigNumber.from(v))}
+          value={depositAmount?.toString()}
+        />
       </div>
-      <Button onClick={() => makeDeposit()}>Make deposit</Button>
+      <Button id="deposit-button" onClick={() => makeDeposit()}>
+        Make deposit
+      </Button>
     </div>
   )
 }

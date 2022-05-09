@@ -19,7 +19,9 @@ export const FinalizeRound = () => {
 
   return (
     <div className="finalize">
-      <Button onClick={() => finalizeRound()}>Finalize round</Button>
+      <Button id="finalize-button" onClick={() => finalizeRound()}>
+        Finalize round
+      </Button>
     </div>
   )
 }
