@@ -6,12 +6,12 @@ import { getGameContract } from '../../../lib/helpers'
 import './FinalizeRound.css'
 
 export const FinalizeRound = () => {
-  const { library } = useWeb3React<Web3Provider>()
+  const { library, chainId } = useWeb3React<Web3Provider>()
 
   const finalizeRound = async () => {
-    if (library === undefined) return undefined
+    if (!library || !chainId) return
 
-    const game = getGameContract(library)
+    const game = getGameContract(library, chainId)
     const res = await game.finalizeRound()
     console.log(res)
     // TODO handle errors

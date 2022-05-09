@@ -10,12 +10,12 @@ import './MakeBet.css'
 export const MakeBet = () => {
   const [amount, setAmount] = useState<BigNumber | null>(null)
   const [outcome, setOutcome] = useState<number>(0)
-  const { library } = useWeb3React<Web3Provider>()
+  const { library, chainId } = useWeb3React<Web3Provider>()
 
   const makeBet = async () => {
-    if (amount === null || library === undefined) return undefined
+    if (!amount || !library || !chainId) return
 
-    const game = getGameContract(library)
+    const game = getGameContract(library, chainId)
     const res = await game.placeBet(outcome, amount)
     console.log(res)
   }

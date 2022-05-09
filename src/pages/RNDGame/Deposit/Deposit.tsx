@@ -9,13 +9,13 @@ import './Deposit.css'
 
 export const Deposit = () => {
   const [depositAmount, setDepositAmount] = useState<BigNumber | null>(null)
-  const { library } = useWeb3React<Web3Provider>()
+  const { library, chainId } = useWeb3React<Web3Provider>()
 
   const makeDeposit = async () => {
-    if (depositAmount === null || library === undefined) return undefined
+    if (!depositAmount || !library || !chainId) return
 
-    const token = getTokenContract(library)
-    const game = getGameContract(library)
+    const token = getTokenContract(library, chainId)
+    const game = getGameContract(library, chainId)
     await token.approve(game.address, depositAmount)
     const res = await game.deposit(depositAmount)
     console.log(res)

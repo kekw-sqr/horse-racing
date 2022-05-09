@@ -7,34 +7,34 @@ import { getGameContract, getTokenContract } from '../../../lib/helpers'
 import './Balance.css'
 
 export const Balance = () => {
-  const { library } = useWeb3React<Web3Provider>()
+  const { library, chainId } = useWeb3React<Web3Provider>()
   const [gameBalance, setGameBalance] = useState(0)
   const [tokenBalance, setTokenBalance] = useState(0)
   // const [mintAmount, setMintAmount] = useState<BigNumber | null>(null)
 
   useEffect(() => {
     const getBalances = async () => {
-      if (library === undefined) return undefined
+      if (!library || !chainId) return
 
-      const game = getGameContract(library)
+      const game = getGameContract(library, chainId)
       const signer = library.getSigner()
       const address = await signer.getAddress()
       const gameBalanceRes = await game.balanceOf(address)
       setGameBalance(gameBalanceRes)
 
-      const token = getTokenContract(library)
+      const token = getTokenContract(library, chainId)
       const tokenBalanceRes = await token.balanceOf(address)
       setTokenBalance(tokenBalanceRes)
     }
 
     const f: () => any = () => getBalances().then(() => setTimeout(f, 1000))
     f()
-  }, [library])
+  }, [library, chainId])
 
   const mint = async () => {
-    if (library === undefined) return undefined
+    if (!library || !chainId) return
 
-    const token = getTokenContract(library)
+    const token = getTokenContract(library, chainId)
     const signer = library.getSigner()
     await token.mint(await signer.getAddress(), BigNumber.from(100))
   }

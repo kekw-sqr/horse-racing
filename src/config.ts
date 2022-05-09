@@ -1,5 +1,8 @@
-export const BET_CONTRACT_CONFIG = {
-  address: '0x68FCda9AEd23245d214c8BFc5E1b7D697a15deAF',
+export const BET_CONTRACT_CONFIG: any = {
+  addresses: {
+    77: '0x68FCda9AEd23245d214c8BFc5E1b7D697a15deAF',
+    31337: '0x9fE46736679d2D9a65F0992F2272dE9f3c7fa6e0',
+  },
   abi: [
     {
       inputs: [
@@ -248,8 +251,11 @@ export const BET_CONTRACT_CONFIG = {
   ],
 }
 
-export const TOKEN_CONTRACT_CONFIG = {
-  address: '0xAc2Ef95727575b6DeE6B14e45fdE6327c6983DA6',
+export const TOKEN_CONTRACT_CONFIG: any = {
+  addresses: {
+    77: '0xAc2Ef95727575b6DeE6B14e45fdE6327c6983DA6',
+    31337: '0xe7f1725E7734CE288F8367e1Bb143E90bb3F0512',
+  },
   abi: [
     {
       inputs: [
