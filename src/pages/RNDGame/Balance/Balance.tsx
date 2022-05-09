@@ -4,12 +4,13 @@ import { BigNumber } from 'ethers'
 import { Web3Provider } from '@ethersproject/providers'
 import { Button } from '../../../components/Button/Button'
 import { getGameContract, getTokenContract } from '../../../lib/helpers'
+import './Balance.css'
 
 export const Balance = () => {
   const { library } = useWeb3React<Web3Provider>()
   const [gameBalance, setGameBalance] = useState(0)
   const [tokenBalance, setTokenBalance] = useState(0)
-  const [mintAmount, setMintAmount] = useState<BigNumber | null>(null)
+  // const [mintAmount, setMintAmount] = useState<BigNumber | null>(null)
 
   useEffect(() => {
     const getBalances = async () => {
@@ -29,19 +30,23 @@ export const Balance = () => {
   }, [library])
 
   const mint = async () => {
-    if (mintAmount === null || library === undefined) return undefined
+    if (library === undefined) return undefined
 
     const token = getTokenContract(library)
     const signer = library.getSigner()
-    await token.mint(await signer.getAddress(), mintAmount)
+    await token.mint(await signer.getAddress(), BigNumber.from(100))
   }
 
   return (
-    <>
-      <div className="tokenBalance">Token Balance: {tokenBalance.toString()}</div>
-      <div className="gameBalance">Game Balance: {gameBalance.toString()}</div>
-      <Button onClick={() => mint()}>Mint</Button>
-      <input type="text" onChange={(e) => setMintAmount(BigNumber.from(e.target.value))} />
-    </>
+    <div className="balance">
+      <div className="values">
+        <div className="tokenBalance">Token Balance: {tokenBalance.toString()}</div>
+        <div className="gameBalance">Game Balance: {gameBalance.toString()}</div>
+      </div>
+
+      <div className="mint">
+        <Button onClick={() => mint()}>Mint</Button>
+      </div>
+    </div>
   )
 }

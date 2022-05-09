@@ -1,0 +1,9 @@
+input[type=text] {
+  background-color: var(--secondary);
+  border: none;
+  padding: 20px;
+  font-size: 20px;
+  border-radius: 10px;
+  color: var(--baby-blue-eyes);
+
+}

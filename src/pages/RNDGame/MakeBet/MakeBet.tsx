@@ -5,6 +5,7 @@ import { Web3Provider } from '@ethersproject/providers'
 import { History } from '../../../components/History/History'
 import { Button } from '../../../components/Button/Button'
 import { getGameContract } from '../../../lib/helpers'
+import { TokenInput } from '../../../components/TokenInput/TokenInput'
 
 export const MakeBet = () => {
   const [outcome, setOutcome] = useState<BigNumber | null>(null)
@@ -20,9 +21,12 @@ export const MakeBet = () => {
 
   return (
     <div className="makeBet">
+      <div className="inputWrapper">
+        <TokenInput onChange={(v) => setOutcome(BigNumber.from(v))} value={outcome?.toString()} />
+      </div>
       <Button onClick={() => makeBet()}>Make bet</Button>
-      <input type="text" onChange={(e) => setOutcome(BigNumber.from(e.target.value))} />
-      <History />
+
+      {/* <History /> */}
     </div>
   )
 }

@@ -4,6 +4,8 @@ import { BigNumber } from 'ethers'
 import { Web3Provider } from '@ethersproject/providers'
 import { Button } from '../../../components/Button/Button'
 import { getGameContract, getTokenContract } from '../../../lib/helpers'
+import { TokenInput } from '../../../components/TokenInput/TokenInput'
+import './Deposit.css'
 
 export const Deposit = () => {
   const [depositAmount, setDepositAmount] = useState<BigNumber | null>(null)
@@ -21,8 +23,10 @@ export const Deposit = () => {
 
   return (
     <div className="deposit">
+      <div className="inputWrapper">
+        <TokenInput onChange={(v) => setDepositAmount(BigNumber.from(v))} value={depositAmount?.toString()} />
+      </div>
       <Button onClick={() => makeDeposit()}>Make deposit</Button>
-      <input type="text" onChange={(e) => setDepositAmount(BigNumber.from(e.target.value))} />
     </div>
   )
 }

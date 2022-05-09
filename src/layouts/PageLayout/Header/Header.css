@@ -8,8 +8,15 @@
   background-color: var(--secondary);
 
   padding: 20px;
+}
+
+.headerWrapper {
+  position: relative;
+  width: 100%;
 
   display: flex;
+  justify-content: space-between;
+  align-items: center;
 }
 
 .icon path {
@@ -17,6 +24,6 @@
 }
 
 .wallet {
-  position: absolute;
-  right: 20px;
+  cursor: pointer;
+  margin-right: 100px;
 }

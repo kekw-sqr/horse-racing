@@ -9,12 +9,15 @@ export const Header = () => {
   const [isWalletModalOpen, setIsWalletModalOpen] = useState(false)
   return (
     <div className="header">
-      <Link to="/" className="icon">
-        <Logo />
-      </Link>
-
-      <div onClick={() => setIsWalletModalOpen(true)}>Connect wallet</div>
-      <WalletModalContainer isOpen={isWalletModalOpen} onClose={() => setIsWalletModalOpen(false)} />
+      <div className="headerWrapper">
+        <Link to="/" className="icon">
+          <Logo />
+        </Link>
+        <div className="wallet" onClick={() => setIsWalletModalOpen(true)}>
+          Connect wallet
+        </div>
+        <WalletModalContainer isOpen={isWalletModalOpen} onClose={() => setIsWalletModalOpen(false)} />
+      </div>
     </div>
   )
 }

@@ -11,8 +11,10 @@ export const RNDGame = () => {
     <PageLayout>
       <div className="rndGame">
         <Balance />
-        <MakeBet />
-        <Deposit />
+        <div className="controls">
+          <MakeBet />
+          <Deposit />
+        </div>
         <FinalizeRound />
       </div>
     </PageLayout>

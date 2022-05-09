@@ -3,6 +3,7 @@ import { useWeb3React } from '@web3-react/core'
 import { Web3Provider } from '@ethersproject/providers'
 import { Button } from '../../../components/Button/Button'
 import { getGameContract } from '../../../lib/helpers'
+import './FinalizeRound.css'
 
 export const FinalizeRound = () => {
   const { library } = useWeb3React<Web3Provider>()

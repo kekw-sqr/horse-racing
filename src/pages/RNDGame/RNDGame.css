@@ -21,3 +21,10 @@
   display: flex;
   justify-content: center;
 }
+
+.controls {
+  margin-top: 100px;
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-start;
+}
