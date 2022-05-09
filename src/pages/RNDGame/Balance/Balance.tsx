@@ -26,7 +26,9 @@ export const Balance = () => {
       const tokenBalanceRes = await token.balanceOf(address)
       setTokenBalance(tokenBalanceRes)
     }
-    getBalances()
+
+    const f: () => any = () => getBalances().then(() => setTimeout(f, 1000))
+    f()
   }, [library])
 
   const mint = async () => {
