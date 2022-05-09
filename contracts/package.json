@@ -14,5 +14,10 @@
   },
   "dependencies": {
     "@openzeppelin/contracts": "^4.6.0"
+  },
+  "scripts": {
+    "test": "hardhat test",
+    "e2e:node": "hardhat node",
+    "e2e:deploy": "hardhat run --network localhost scripts/deploy-task.js"
   }
 }
