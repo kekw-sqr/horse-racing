@@ -42,13 +42,13 @@ jobs:
           node-version: 16
       - name: Yarn install
         run: yarn
-      - name: get code coverage report
+      - name: Get code coverage report
         run: npx jest --coverage --coverageDirectory ./coverage
       - name: SonarCloud Scan
         uses: SonarSource/sonarcloud-github-action@master  
         with:
           args: >
-            -Dsonar.javascript.lcov.reportPaths=coverage/lcov.info
+            -Dsonar.javascript.lcov.reportPaths=src/coverage/lcov.info
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}  # Needed to get PR information, if any
           SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
