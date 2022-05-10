@@ -54,6 +54,8 @@ jobs:
           SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
   build:
     runs-on: ubuntu-latest
+    permissions:
+      packages: write
     needs: [validate, sonarcloud]
     steps:
       - uses: actions/checkout@v3
